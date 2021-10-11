@@ -5,7 +5,7 @@ export interface CounterState {
 }
 
 export const initialState: CounterState = {
-  current: 42
+  current: 0
 }
 
 export function reducer(state: CounterState = initialState, action: Action): CounterState {

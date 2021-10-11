@@ -32,5 +32,6 @@ export const selectResetDisabled = createSelector(
 
 export const selectCountToGoal = createSelector(
   selectCounterCurrent,
-  (current) => 100 - current
+  selectCounterGoal,
+  (current, goal) => goal - current
 )

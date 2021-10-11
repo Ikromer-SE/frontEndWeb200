@@ -1,4 +1,5 @@
-import { Action, createReducer } from "@ngrx/store"
+import { Action, createReducer, on } from "@ngrx/store"
+import * as actions from '../actions/settings.actions';
 
 export interface SettingsState {
   counterGoal: number;
@@ -9,7 +10,8 @@ const initialState: SettingsState = {
 }
 
 const reducerFunction = createReducer(
-  initialState
+  initialState,
+  on(actions.countGoalChanged, (s, a) => ({ ...s, counterGoal: a.newGoal }))
 )
 
 export function reducer(state: SettingsState = initialState, action: Action): SettingsState {

@@ -11,7 +11,7 @@ const initialState: SettingsState = {
 
 const reducerFunction = createReducer(
   initialState,
-  on(actions.countGoalChanged, (s, a) => ({ ...s, counterGoal: a.newGoal }))
+  on(actions.countGoal, actions.countGoalChanged, (s, a) => ({ ...s, counterGoal: a.payload }))
 )
 
 export function reducer(state: SettingsState = initialState, action: Action): SettingsState {

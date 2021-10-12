@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState, selectCounterGoal } from 'src/app/reducers';
-import * as actions from '../../actions/settings.actions'
-
+import * as actions from '../../actions/settings.actions';
 @Component({
   selector: 'app-user-settings',
   templateUrl: './user-settings.component.html',
@@ -11,8 +10,7 @@ import * as actions from '../../actions/settings.actions'
 })
 export class UserSettingsComponent implements OnInit {
 
-  goal$!: Observable<number>;
-
+  goal$!: Observable<number>
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
@@ -20,10 +18,10 @@ export class UserSettingsComponent implements OnInit {
   }
 
   goalChanged(goalElement: HTMLInputElement) {
+
     const newGoal = goalElement.valueAsNumber;
-    this.store.dispatch(actions.countGoalChanged({ newGoal }));
+    this.store.dispatch(actions.countGoalChanged({ payload: newGoal }));
     goalElement.value = '';
     goalElement.focus();
   }
-
 }

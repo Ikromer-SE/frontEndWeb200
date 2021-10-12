@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CounterComponent } from './components/counter/counter.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
+import { SupportComponent } from './features/support/support.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'settings',
     component: UserSettingsComponent
+  },
+  {
+    path: 'support',
+    component: SupportComponent
   },
   {
     path: '**',

@@ -12,6 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 import { StatusBarComponent } from './components/status-bar/status-bar.component';
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 import { SsnMaskPipe } from './pipes/ssn.pipe';
+import { EffectsModule } from '@ngrx/effects';
+import { SettingsEffects } from './effects/settings.effects';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { SsnMaskPipe } from './pipes/ssn.pipe';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([SettingsEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

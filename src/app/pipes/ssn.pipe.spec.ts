@@ -21,19 +21,19 @@ describe('ssnMask Pipe', () => {
       const sample = '';
       const mask = new SsnMaskPipe();
 
-      expect(mask.transform(sample)).toBe('No SSN Available');
+      expect(mask.transform(sample)).toBe('Invalid SSN');
     });
     it('displays message for null string ssn', () => {
       const sample = undefined;
       const mask = new SsnMaskPipe();
 
-      expect(mask.transform(sample)).toBe('No SSN Available');
+      expect(mask.transform(sample)).toBe('Invalid SSN');
     });
     it('displays message for null string ssn', () => {
       const sample = null;
       const mask = new SsnMaskPipe();
 
-      expect(mask.transform(sample)).toBe('No SSN Available');
+      expect(mask.transform(sample)).toBe('Invalid SSN');
     });
 
   });

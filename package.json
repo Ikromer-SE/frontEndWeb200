@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "test:isolated": "cypress open"
+    "test:isolated": "cypress open",
+    "test:isolated:run": "cypress run"
   },
   "private": true,
   "dependencies": {

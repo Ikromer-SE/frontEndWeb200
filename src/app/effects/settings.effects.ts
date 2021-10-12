@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType, } from "@ngrx/effects";
 import { filter, map, tap } from 'rxjs/operators';
 import * as actions from '../actions/settings.actions';
-import * as appActions from '../actions/app.actions';
 
 @Injectable()
 export class SettingsEffects {
@@ -18,7 +17,7 @@ export class SettingsEffects {
   // When applicationStarted -> look for the goal in local Storage -> (countGoal) | nothing.
   getSavedCountGoal$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(appActions.applicationStarted),
+      ofType(actions.getSavedGoal),
       map(() => localStorage.getItem('counterGoal')), // '653' | null
       filter(storedValue => storedValue !== null),// => '653' | quit here.
       filter((val: any) => typeof (val) === 'string'), // "any" => string

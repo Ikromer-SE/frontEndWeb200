@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { SupportModel } from './models';
-
+import { SupportState } from './reducers';
+import * as actions from './actions/support.actions';
 @Component({
   selector: 'app-support',
   templateUrl: './support.component.html',
@@ -8,7 +10,7 @@ import { SupportModel } from './models';
 })
 export class SupportComponent implements OnInit {
 
-  words = ['dog', 'cat']
+
   model: SupportModel = {
     supportContact: {
       name: 'Sue',
@@ -17,10 +19,12 @@ export class SupportComponent implements OnInit {
     },
     supportPhone: null,
     status: 'Groovy',
-    currentlyOpen: true
+    currentlyOpen: false
   }
+  constructor(private store: Store<SupportState>) {
+    store.dispatch(actions.loadSupportReport());
 
-  constructor() { }
+  }
 
   ngOnInit(): void {
   }

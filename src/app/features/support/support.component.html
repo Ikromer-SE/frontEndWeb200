@@ -1,1 +1,12 @@
-<p>support works!</p>
+<div class="card">
+  <div class="card-header">
+    Support is <span *ngIf="model.currentlyOpen">open!</span>
+    <div *ngIf="!model.currentlyOpen">Closed</div>
+  </div>
+  <div class="card-body">
+    <p>The Status is: {{model.status}}</p>
+    <p>For Help: {{ model.supportContact.name }}</p>
+  </div>
+</div>
+
+<p *ngFor="let word of words">{{ word }}</p>

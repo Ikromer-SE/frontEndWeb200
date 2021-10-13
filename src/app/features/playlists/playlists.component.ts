@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { loadSongs } from './actions/song.actions';
+import { PlaylistsState } from './reducers';
 
 @Component({
   selector: 'app-playlists',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<PlaylistsState>) {
+    store.dispatch(loadSongs());
+  }
 
   ngOnInit(): void {
   }

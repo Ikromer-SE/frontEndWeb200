@@ -5,6 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './components/list/list.component';
 import { AddComponent } from './components/add/add.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { featureName, reducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
+import { SongEffects } from './effects/song.effects';
+
+
 
 const routes: Routes = [
   {
@@ -32,7 +39,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
-  ]
+    RouterModule.forChild(routes),
+    StoreModule.forFeature(featureName, reducers),
+    HttpClientModule,
+    EffectsModule.forFeature([SongEffects])
+  ],
+  exports: [PlaylistsComponent]
 })
 export class PlaylistsModule { }

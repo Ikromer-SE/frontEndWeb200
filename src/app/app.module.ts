@@ -16,6 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { SettingsEffects } from './effects/settings.effects';
 import { AppEffects } from './effects/app.effects';
 import { SupportModule } from './features/support/support.module';
+import { PlaylistsModule } from './features/playlists/playlists.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SupportModule } from './features/support/support.module';
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([SettingsEffects, AppEffects]),
-    SupportModule
+    SupportModule,
+    PlaylistsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

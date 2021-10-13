@@ -11,7 +11,7 @@ export class AddComponent implements OnInit {
   form = this.formBuilder.group({
     title: [],
     artist: [],
-    albmu: []
+    album: []
   })
 
   constructor(private formBuilder: FormBuilder) { }

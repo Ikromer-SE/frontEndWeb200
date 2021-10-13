@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { songAdded } from '../../actions/song.actions';
+import { PlaylistsState } from '../../reducers';
 
 @Component({
   selector: 'app-add',
@@ -9,16 +12,26 @@ import { FormBuilder } from '@angular/forms';
 export class AddComponent implements OnInit {
 
   form = this.formBuilder.group({
-    title: [],
-    artist: [],
-    album: []
+    title: ['', [Validators.required]],
+    artist: ['', [Validators.required, Validators.maxLength(100)]],
+    album: ['', []]
   })
+  constructor(private formBuilder: FormBuilder, private store: Store<PlaylistsState>) { }
 
-  constructor(private formBuilder: FormBuilder) { }
-
+  get title() { return this.form.get('title'); }
+  get artist() { return this.form.get('artist'); }
+  get album() { return this.form.get('album'); }
   ngOnInit(): void {
   }
 
-  submit() { }
+  submit() {
+    if (this.form.valid) {
+      console.log('Dispatch an action, yo!');
+      this.store.dispatch(songAdded({ payload: this.form.value }));
+      this.form.reset();
+    } else {
+      console.log('There are errors!');
+    }
+  }
 
 }

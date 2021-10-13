@@ -14,7 +14,6 @@ export const reducers: ActionReducerMap<PlaylistsState> = {
 
 // 1 - Feature Selector
 const selectFeature = createFeatureSelector<PlaylistsState>(featureName);
-
 // 2 - Selector per branch
 const selectSongsBranch = createSelector(
   selectFeature,
@@ -31,7 +30,8 @@ export const selectSongListItemModel = createSelector(
   (songs) => songs.map(song => {
     return {
       ...song,
-      album: song.album || 'No Album Specified'
+      album: song.album || 'No Album Specified',
+      isTemporary: song.id.startsWith('TEMP')
 
     } as SongListItemModel
   })

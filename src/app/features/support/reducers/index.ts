@@ -1,4 +1,5 @@
 import { ActionReducerMap, createFeatureSelector, createSelector } from "@ngrx/store";
+import { SupportModel } from "../models";
 import * as fromSupportReport from './support.reducer';
 
 export const featureName = 'supportFeature';
@@ -21,6 +22,10 @@ const selectReportBranch = createSelector(
 );
 
 //3. Any "helpers" (optional)
+const selectReport = createSelector(
+  selectReportBranch,
+  b => b.supportInfo
+)
 
 //4. What the component needs
 
@@ -30,3 +35,15 @@ export const selectReportLoaded = createSelector(
   selectReportBranch,
   b => b.isLoaded
 );
+
+export const selectReportModel = createSelector(
+  selectReport,
+  report => {
+    return {
+      currentlyOpen: report?.currentlyOpen || false,
+      status: report?.status || false,
+      supportContact: report?.supportContact,
+      supportPhone: report?.supportPhone || 'Not Taking Calls'
+    } as SupportModel
+  }
+)

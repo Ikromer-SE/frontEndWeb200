@@ -30,12 +30,12 @@ import { PlaylistsModule } from './features/playlists/playlists.module';
   ],
   imports: [
     BrowserModule,
+    PlaylistsModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([SettingsEffects, AppEffects]),
     SupportModule,
-    PlaylistsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

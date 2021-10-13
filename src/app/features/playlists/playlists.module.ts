@@ -4,6 +4,7 @@ import { PlaylistsComponent } from './playlists.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './components/list/list.component';
 import { AddComponent } from './components/add/add.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ]
 })
